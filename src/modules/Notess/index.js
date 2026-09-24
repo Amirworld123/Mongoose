@@ -1,0 +1,1 @@
+export {default as NotessController} from "./Notess.controller.js"

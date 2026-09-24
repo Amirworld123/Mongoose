@@ -3,17 +3,17 @@ import { globalErrorHandling } from './middleware/index.js';
 import { bootstrapDB } from './DB/connectionDB.js';
 import { PORT } from "./config.js";
 import cors from "cors"
-import { BookController } from "./modules/Book/index.js";
-import { AuthorController } from "./modules/Authors/index.js";
-import { LogControlller } from "./modules/Loog/index.js";
+import { UserController } from "./modules/Users/index.js";
+import { NotessController } from "./modules/Notess/index.js";
+
 
 const app = express();
 
 await bootstrapDB(app,PORT);
 app.use(cors(),express.json());
-app.use("/Books",BookController)
-app.use("/Authors",AuthorController)
-app.use("/Logs",LogControlller)
+
+app.use("/users" , UserController)
+app.use("/notes" ,NotessController )
 app.all("/", (req,res)=> res.status(200).json({message:"welcome byko fy dayrtna"}))
 
 
